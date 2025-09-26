@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>to-do-list</title>
+</head>
+
+<body class="bg-linear-to-r from-blue-900 to-purple-400 font-[Gantari]">
+    <div class="flex flex-col max-w-4xl h-screen justify-center mx-auto gap-3">
+        <div class="flex justify-between items-center">
+            <h1 class="text-5xl font-bold text-amber-50">
+                LISTA DE TAREFAS
+            </h1>
+            <div class="flex items-center space-x-4">
+                <select name="filtro" id="filtro" class="bg-purple-900 text-white p-2 rounded-2xl font-semi-bold">
+                    <option value="todas">Todas</option>
+                    <option value="pendentes">Pendentes</option>
+                    <option value="concluídas">Concluídas</option>
+                </select>
+            </div>
+            <div>
+                <div class="flex text-amber-50 font-semibold gap-1 justify-end px-2">
+                    <p><i class="fa-regular fa-clock"></i></p>
+                    <p id="relogio">hh:mm:ss</p>
+                </div>
+                <button id="btnAbrirModalAdd"
+                    class="bg-amber-50 text-purple-800 font-semibold cursor-pointer rounded-2xl p-2 px-5 text-2xl border-3 border-blue-800">
+                    ADD TAREFA <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+
+        <dialog id="modalAdd" class="m-auto w-120 p-6 rounded-lg shadow-2xl">
+            <form method="dialog" class="flex flex-col items-center gap-4">
+                <h2 class="bg-purple-950 text-white text-2xl font-bold p-3 m-3 rounded-lg">Nova Tarefa</h2>
+                <h3 class="text-2xl font-bold">Título:</h3>
+                <input type="text" name="tituloTarefa" id="tituloTarefa"
+                    class="border border-b-gray-800 p-2 rounded-md w-full h-10"">
+                    <h3 class=" text-2xl font-bold">Descrição:</h3>
+                <textarea name="descricaoTarefa" id="descricaoTarefa"
+                    class="border border-b-gray-800 p-2 rounded-md w-full h-24""></textarea>
+                    <div class=" flex gap-4">
+                    <button id="btnVoltar" class="bg-gray-600 text-white text-xl font-semibold cursor-pointer p-3 rounded-lg">
+                        Voltar
+                    </button>
+                    <button id="btnAddTarefa" type="button" class="bg-purple-500 text-white text-xl font-semibold cursor-pointer p-3 rounded-lg">
+                        Adicionar <i class="fa-solid fa-plus"></i>
+                    </button>
+                    </div>
+                </form>
+            </dialog>
+
+        <dialog id="modalExcluir" class="m-auto w-120 p-6 rounded-lg shadow-2xl">
+            <form method="dialog" class="flex flex-col items-center gap-4">
+                <h2 class="bg-red-400 text-white text-2xl font-bold p-3 m-3 rounded-lg">Atenção!</h2>
+                <p class="p-3 text-xl">Tem certeza que deseja <strong>excluir</strong> esta tarefa?</p>
+                <div class="flex gap-4">
+                <button class="bg-gray-600 text-white text-xl font-semibold cursor-pointer p-3 rounded-lg">
+                    Cancelar <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <button id="btnConfirmarExclusao" class="bg-red-400 text-white text-xl font-semibold cursor-pointer p-3 rounded-lg">
+                    Excluir <i class="fa-solid fa-trash"></i>
+                </button>
+                </div>
+            </form>
+        </dialog>
+
+            <dialog id="modalConcluir" class="m-auto w-120 p-6 rounded-lg shadow-2xl">
+                <form method="dialog" class="flex flex-col items-center gap-4">
+                    <h2 class="bg-green-400 text-white text-2xl font-bold p-3 m-3 rounded-lg">Confirmação</h2>
+                    <p class="p-3 text-xl">Tem certeza que deseja <strong>concluir</strong> esta tarefa?</p>
+                    <div class="flex gap-4">
+                    <button class="bg-gray-600 text-amber-50 font-semibold text-xl cursor-pointer p-3 rounded-lg">
+                        Cancelar <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button id="btnConfirmarConclusao" class="bg-green-400 text-white font-semibold text-xl cursor-pointer p-3 rounded-lg">
+                        Concluir <i class="fa-solid fa-check"></i>
+                    </button>
+                    </div>
+                </form>
+            </dialog>
+
+            <div class="bg-amber-50 h-150 rounded-3xl overflow-auto">
+                <table id="tabelaTarefas" class="text-xl w-full">
+                    <thead class="bg-purple-800 text-white ">
+                        <tr>
+                            <th class="p-3 rounded-tl-lg">Título</th>
+                            <th class="p-3">Descrição</th>
+                            <th class="p-3">Data</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3 rounded-tr-lg">Excluir/Concluir</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script type="module" src="/src/main.js"></script>
+    </body>
+</html>
